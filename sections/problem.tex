@@ -1,0 +1,56 @@
+\subsection{Problem Description}
+Formally, quantum compression can be stated as a game between two players.
+Ashwin and Bert first agree upon an \emph{ensemble} 
+\(E \coloneq \{(p_x, \rho_x)\}_x\)
+ranging over some alphabet \(x \in X \).
+We ask for \(p_x\) to sum to 1
+so that \(x \mapsto p_x \) is a valid probability mass function over \(X \).
+According to this above probability, a referee samples \(x_1, x_2, \dots, x_n\)
+and prepares \(\rho_{x_1}^{\tsf{C}_1} \ot \rho_{x_2}^{\tsf{C}_2} \ot \cdots \ot \rho_{x_n}^{\tsf{C}_n} \)
+say on some register \(\tsf{C} = \bigotimes_{k=1}^n \tsf{C}_k\) for Ashwin. 
+Ashwin is tasked with sending this above state to Bert using as few resources as possible.
+In blind compression, Ashwin is not given a (classical) copy of the sampled \(x_i\).
+In contrast, for visible compression Ashwin would have access to such a copy of the samples.
+Additionally, Ashwin and Bert may share some entanglement \(\ket{\phi}^{\tsf{AB}}\).
+If they do, we say that the protocol is entanglement-assisted.
+Furthermore, in the special case where \(n = 1\), the protocol is said to be one-shot.
+
+In practice, we associate to the ensemble the classical-quantum state 
+\[\rho^\tsf{XC} \coloneq \sum_{x \in \Sigma} p_x \opproj{x}^\tsf{X} \ot \rho_x^\tsf{C}\]
+and take a block of \(n\) samples to be represented by
+\[\left(\rho^{\tsf{XC}}\right)^{\ot n} = 
+    \sum_{x_1x_2\dots x_n}p_{x_1}\dots p_{x_n}
+    \opproj{x_1}^{\tsf{X}_1} \ot \dots \ot \opproj{x_n}^{\tsf{X}_n}
+    \ot \rho_{x_1}^{\tsf{C}_1} \ot \dots \ot \rho_{x_n}^{\tsf{X}_n}
+\]
+The compression then comprises of a pair of encoding and decoding channels
+\[ \mce : \tsf{C}_1\tsf{C}_2\dots\tsf{C}_n\tsf{A} \to \tsf{TA'},
+    \qquad \mc{D} : \tsf{TB} \to \tsf{C}_1\tsf{C}_2\dots\tsf{C}_n\tsf{B'}\]
+for which the communication cost of this protocol is \(\log \dim \tsf{C'}\)
+and the entanglement cost (as in~\cite{BabHadiashar2020entanglementcostof})
+is \(\log \dim \tsf{A} = \log \dim \tsf{B} \)
+representing the number of ebits required.
+
+We also consider two different characterizations of error as in~\cite{winter2002compression}.
+For some error parameter \(\eps\),
+in the local regime we ask that for all \(i\),
+\[\Delta\left(
+        \Tr_{\tsf{A'B'C}_1\dots\tsf{C}_{i-1}\tsf{C}_{i+1}\dots\tsf{C}_n}
+            \circ \mc{D}\circ\mce
+            \left(\rho_{x_1}^{\tsf{C}_1}\ot \dots \ot \rho_{x_n}^{\tsf{C}_n}
+                \ot \opproj{\phi}^{\tsf{AB}}\right),
+        \rho_{x_i}
+    \right) \le \eps \]
+where \(\Delta(\rho, \sigma) \coloneq \norm{\rho - \sigma}_1\) is the trace distance between
+\(\rho\) and \(\sigma\).
+Essentially, the trace distance must be bounded for each sample in the block.
+
+Alternatively, the global regime asks for the global error to be bounded:
+\[\Delta\left(
+    \Tr_{A'B'} \circ \mc{D} \circ \mce \left(
+        \rho_{x_1}^{\tsf{C}_1}\ot \dots \ot \rho_{x_n}^{\tsf{C}_n}
+            \ot \opproj{\phi}^{\tsf{AB}}        
+    \right),
+    \rho_{x_1}\ot \dots \ot \rho_{x_n}
+\right) \le \eps\]
+Note that the global error criterion implies the local.

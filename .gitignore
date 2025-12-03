@@ -10,3 +10,6 @@
 *.pdf
 *.out
 *.bbl
+*.nav
+*.snm
+*.toc

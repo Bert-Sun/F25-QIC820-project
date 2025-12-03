@@ -1,0 +1,26 @@
+\subsection{The Entanglement Cost of One-Shot Compression}
+In a similar vein, one can also ask about how much entanglement is necessary for compression.
+A separate paper by Hadiashar and Nayak~\cite{BabHadiashar2020entanglementcostof}
+it is shown that there exist ensembles which are incompressible without entanglement
+but requires only O\((\log\log\frac{1}{\eps})\) overhead above the Holevo information when allowed entanglement in the one-shot scenario.
+\begin{theorem}
+    There exist universal constants \(c_1, c_2 > 0\) such that for any \(\eps \in (0,1)\),
+    any \(k, m \in \En\) satisfying \(k \ge 6/(1-\eps)\) and \(m \ge c_1(\ln k)/(1-\eps)^2\),
+    there exists an ensemble
+    \[\left(\left(\frac{1}{n},\rho_x\right) : x \in [n], \rho_x \in \Dens(\Cee^m)\right)\]
+    which satisfies:
+    \begin{enumerate}
+        \item \(I(X:C)_\tau = I_{\max}(X:C)_\tau = \log_2 k\),
+        where \(\tau \coloneq \frac{1}{n}\sum_{x \in [n]}\opproj{x}^\tsf{A}\ot \rho_x^\tsf{B}\)
+        \item there exists a one-way protocol with shared entanglement for visible compression of the ensemble with global error at most \(\eps/2\) and communication cost
+        \(\frac{1}{2} \log k + O(\log \log \frac{1}{\eps})\)
+        \item the sum of communication and entanglement cost of \emph{any} one-way protocol with global error at most \(\eps/2\) is at least
+        \[\log m - 3\log\frac{1}{1-\eps}-c_2\]
+    \end{enumerate}
+\end{theorem}
+Operationally the first two conditions simply ask that the Holevo information of the ensemble can be arbitrarily small relative to the dimension of the ambient space,
+and characterizes the optimal visible compression rate with one-shot overhead.
+The meat is in the third condition, which says that void of entanglement
+the ensemble is incompressible again near-maximally with leading term saturating the dimension bound.
+
+

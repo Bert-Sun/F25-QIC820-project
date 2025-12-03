@@ -1,0 +1,52 @@
+\documentclass{beamer}
+\usetheme{Copenhagen}
+\usepackage{../preamble}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\title{Some Bad Cases in Quantum Compression}
+\author{Bert Sun}
+\institute{University of Waterloo}
+\date{Fall 2025}
+
+\begin{document}
+\frame{\titlepage}
+
+% \begin{frame}
+%     \frametitle{Table of Contents}
+%     \tableofcontents
+% \end{frame}
+
+\section{Basic Preliminaries}
+\begin{frame}
+  \frametitle{A Quick Refresher}
+  Given an ensemble \(E \coloneq \{(p_x, \rho_x)\}\) where \(\rho_x \in \Dens(\Cee^m)\),
+  find a pair of encoding and decoding quantum channels 
+  \[\mce \in \Chan(\Cee^m, \Cee^d), \qquad \mc{D} \in \Chan(\Cee^d, \Cee^m)\]
+  for which the composition \(\mc{D} \circ \mce\) acts approximately by the identity on \(E\)
+\end{frame}
+\begin{frame}
+  \frametitle{A Quick Refresher}
+  Generally we define the ensemble state
+  \[\rho^{\tsf{XC}} \coloneq \sum_x p_x \opproj{x}^{\tsf{X}} \ot \rho_x^{\tsf{C}}\]
+  so the encoding and decoding channels act as
+  % TODO rename channels so notation is less confusing
+  \[\mce \in \Chan(\tsf{C}, \tsf{C'}), \qquad \mc{D} \in \Chan(\tsf{C'}, \tsf{C})\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Entanglement Assistance}
+  In full generality, we sometimes also allow the encoder (Ashwin) and decoder (Bert) to share entanglement, say
+  \(\ket{\phi}^{\tsf{AB}}\)
+  This is modelled by letting the encoding and decoding map act on their respective registers on some shared ebits:
+
+  \[\mce \in \Chan(\Cee^m \ot \tsf{A}, \Cee^d), \qquad \mc{D} \in \Chan(\Cee^d \ot \tsf{B}, \Cee^m)\]
+\end{frame}
+
+\end{document}

@@ -1,0 +1,49 @@
+\subsection{Incompressibility of Classical Distributions}
+In a paper by Anshu, Leung, and Touchette~\cite{anshu2021incompressibilityclassicaldistributions},
+the group produces a robust lower bound on the communication rate required for the blind compression of classical ensembles when Ashwin and Bert are allowed to freely share entanglement and allowing constant local error.
+A specific two state classical ensemble is then created which using the previous lower bound can be shown to be compressible by only a constant number of qubits irrespective of the dimension.
+
+In this setting, \tsf{T} is asked to be a classical register.
+Additionally, since the ensemble is classical Ashwin can always perfectly preserve the information in the registers \(\tsf{C}_1, \dots, \tsf{C}_n\).
+As such, we can ask for the decoding map to decode into a notationally distinct register so we can examine the correlation between the original message and the transmitted one:
+\[\mce : \tsf{C}_1\tsf{C}_2\dots\tsf{C}_n\tsf{A} \to \tsf{C}_1\tsf{C}_2\dots\tsf{C}_n\tsf{T},
+    \qquad \mc{D} : \tsf{TB} \to \tsf{C'}_1\tsf{C'}_2\dots\tsf{C'}_n\tsf{B'}\]
+
+\begin{theorem}\label{achievable_rate}
+    For \(\eps \in (0,1)\), the achievable rate \(R\) is lower bounded by
+    \[R \ge \min_{\mc{F}:C \to CC'}(I(C:C'|X)_\tau) + I(X : C)_\rho - \eps\log\abs{X} - 1\]
+    Where \(\tau^{\tsf{XCC'}} \coloneq \mc{F}(\rho^{\tsf{XC}})\) 
+    and the quantum map \(\mc{F}\) 
+    must satisfy \(\Delta(\tau^{\tsf{XC'}, \rho^{XC'}}) \le \eps\) and 
+    \(\tau^{\tsf{XC}} = \rho^{\tsf{XC}}\)
+\end{theorem}
+This theorem shows that the achievable rate can exceed the Holevo information \(I(X:C)_\rho\).
+If we specialize to the case where the ensemble is two equiprobable classical distributions,
+the difference can be related to operationally important constructions through the following proposition:
+\begin{proposition}
+    \begin{align*}
+        \sqrt{I(C:C'|X)_{\mc{F}(\rho^{\tsf{XC}})}}
+        &\ge \frac{1}{\sqrt{2}}\left(
+            \Delta(\tau_0^{\tsf{CC'}}, \tau_0^\tsf{C}\ot\tau_0^\tsf{C'}) +
+            \Delta(\tau_1^{\tsf{CC'}}, \tau_1^\tsf{C}\ot\tau_1^\tsf{C'})
+        \right) \\
+        &\ge \frac{1}{\sqrt{2}}\left(
+            \Delta(\rho_0^\tsf{C} \ot \rho_0^\tsf{C'}, \rho_1^\tsf{C} \ot \rho_1^\tsf{C'}) -
+            \Delta(\rho_0^\tsf{C}, \rho_1^\tsf{C})
+            -2\eps
+        \right)
+    \end{align*}
+\end{proposition}
+One should view the first inequality as a statement regarding a ``classical no-cloning bound''
+and the second as the increase in distinguishability between \(\rho_0^\tsf{C}, \rho_1^\tsf{C}\)
+given multiple copies.
+In particular, this increase can be thought of some measure of \emph{indistinguishability} between the two states.
+Additionally, using the two classical distributions
+\[p_{C|X = 0}(c) = \frac{1}{d}, \qquad p_{C|X=1}(c) = \frac{d-c+1}{\eta}\]
+where \(\eta = \frac{d(d+1)}{2}\) and \(d\) is the dimension of \tsf{C},
+by viewing the quantum map as a stochastic map the authors are able to show that the quantum states associated to the above classical distribution satisfy
+\[I(C:C'|X)_\tau \ge \log d - 5\]
+for choice of \(\eps = \frac{1}{24d^4\log d}\).
+In conjunction with Theorem~\ref{achievable_rate} the ensemble requires a rate of
+\(\log d - 7\) even in the asymptotic case for communication, while the Holevo information is at most 1.
+This produces a near-maximal separation which saturates the dimension bound in leading order.
