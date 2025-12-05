@@ -33,20 +33,61 @@
 \end{frame}
 \begin{frame}
   \frametitle{A Quick Refresher}
-  Generally we define the ensemble state
-  \[\rho^{\tsf{XC}} \coloneq \sum_x p_x \opproj{x}^{\tsf{X}} \ot \rho_x^{\tsf{C}}\]
-  so the encoding and decoding channels act as
-  % TODO rename channels so notation is less confusing
-  \[\mce \in \Chan(\tsf{C}, \tsf{C'}), \qquad \mc{D} \in \Chan(\tsf{C'}, \tsf{C})\]
+  % \begin{itemize}
+    Generally we define the CQ ensemble state
+    \[\rho^{\tsf{XC}} \coloneq \sum_x p_x \opproj{x}^{\tsf{X}} \ot \rho_x^{\tsf{C}}\]
+    \pause
+    And so the encoding and decoding channels act as
+    % TODO rename channels so notation is less confusing
+    \[\mce \in \Chan(\tsf{C}, \tsf{C'}), \qquad \mc{D} \in \Chan(\tsf{C'}, \tsf{C})\]
+  % \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Entanglement Assistance}
   In full generality, we sometimes also allow the encoder (Ashwin) and decoder (Bert) to share entanglement, say
   \(\ket{\phi}^{\tsf{AB}}\)
+
+  \pause
   This is modelled by letting the encoding and decoding map act on their respective registers on some shared ebits:
 
-  \[\mce \in \Chan(\Cee^m \ot \tsf{A}, \Cee^d), \qquad \mc{D} \in \Chan(\Cee^d \ot \tsf{B}, \Cee^m)\]
+  \[\mce \in \Chan(\tsf{C} \ot \tsf{A}, \tsf{C'}), \qquad \mc{D} \in \Chan(\tsf{C'} \ot \tsf{B}, \tsf{C})\]
+  % TODO add circuit diagram perchance
 \end{frame}
+
+\begin{frame}
+  \frametitle{Koashi-Imoto Decomposition}
+  Associated to every ensemble \(\{p_x, \rho_x\}\), \(\rho_x \in \Dens(\mcH)\)
+  there exists a decomposition of \(\mcH\) as:
+  \[\mcH = \bigoplus_{\ell=1}^L \mcH_J^{(\ell)} \ot \mcH_K^{(\ell)}\]
+  \[\rho_x\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Known Results}
+  \begin{theorem}[BCFJS '01, Horodecki '00]
+    owo
+  \end{theorem}
+  % schumacher for blind, BCFJS 01 and horodecki 00 for visible mixed state, KI for blind mixed
+\end{frame}
+
+\section{Incompressibility Without Entanglement}
+\begin{frame}
+  \frametitle{Compressing Without Entanglement}
+\end{frame}
+
+\section{Incompressibility of Classical Distributions}
+\begin{frame}
+  \frametitle{Classical Distributions are Incompressible}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks, noframenumbering]
+  \frametitle{References}
+  \nocite{*}
+\bibliographystyle{unsrt}
+  \bibliography{citations.bib}
+\end{frame}
+
 
 \end{document}
